@@ -1,0 +1,33 @@
+steps:
+  # 1. Install dependencies
+  - name: 'python:3.10-slim'
+    id: 'install-dependencies'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        pip install --upgrade pip
+        pip install -r requirements.txt
+
+  # 2. Compile Kubeflow / Vertex AI Pipeline
+  - name: 'python:3.10-slim'
+    id: 'compile-pipeline'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        pip install -r requirements.txt
+        python -c "from kfp import compiler; from src.pipelines.vertex_pipeline import fraud_detection_pipeline; compiler.Compiler().compile(fraud_detection_pipeline, 'fraud_pipeline.json')"
+
+  # 3. Submit Pipeline to Vertex AI
+  - name: 'python:3.10-slim'
+    id: 'submit-vertex-pipeline'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        pip install -r requirements.txt
+        python -m src.pipelines.run_pipeline
+
+options:
+  logging: CLOUD_LOGGING_ONLY

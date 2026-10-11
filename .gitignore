@@ -1,0 +1,113 @@
+# ==========================================
+# Byte-compiled / optimized / DLL files
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ==========================================
+# Virtual Environments
+# ==========================================
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ==========================================
+# Testing & Coverage
+# ==========================================
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+
+# ==========================================
+# Sensitive Information, Credentials & Keys
+# ==========================================
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+*credentials*.json
+*service-account*.json
+*service_account*.json
+*gcp-key*.json
+*gcp_key*.json
+gcp_credentials*.json
+key.json
+keys/
+credentials/
+secrets/
+
+# ==========================================
+# Datasets & Large Data Files
+# ==========================================
+ieee-fraud-detection/
+data/processed/*
+!data/processed/.gitkeep
+data/raw/*
+!data/raw/.gitkeep
+*.csv
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.zip
+*.tar
+*.tar.gz
+*.gz
+*.7z
+*.tsv
+
+# ==========================================
+# Model Checkpoints & Large Artifacts
+# ==========================================
+models/*.joblib
+models/*.pkl
+models/*.pickle
+models/*.pt
+models/*.pth
+models/*.bin
+models/*.onnx
+models/*.ubj
+fraud_pipeline.json
+
+# ==========================================
+# MLflow & Experiment Tracking
+# ==========================================
+mlflow.db
+mlruns/
+mlartifacts/
+.mlflow/
+
+# ==========================================
+# Logs
+# ==========================================
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ==========================================
+# IDE & Operating System Files
+# ==========================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

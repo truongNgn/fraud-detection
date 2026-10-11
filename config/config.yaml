@@ -1,0 +1,35 @@
+data:
+  # Mode can be 'local' (uses files in ieee-fraud-detection/) or 'bigquery' (uses BigQuery Sandbox free tier)
+  source_mode: "local"
+  raw_dir: "ieee-fraud-detection"
+  processed_dir: "data/processed"
+  train_transaction_file: "train_transaction.csv"
+  train_identity_file: "train_identity.csv"
+  # Optional settings when using BigQuery Sandbox:
+  bigquery:
+    project_id: "mlops-fraud-pipeline-dev"
+    dataset_id: "fraud_detection_dwh"
+    features_table: "fraud_features"
+
+mlflow:
+  # Local SQLite database for lightweight, persistent MLflow tracking
+  tracking_uri: "sqlite:///mlflow.db"
+  experiment_name: "ieee-fraud-detection"
+  registered_model_name: "fraud_detector_xgb"
+
+model:
+  target_column: "isFraud"
+  min_auc_threshold: 0.80
+  hyperparameters:
+    max_depth: 6
+    learning_rate: 0.05
+    n_estimators: 150
+    subsample: 0.8
+    colsample_bytree: 0.8
+    scale_pos_weight: 27.0 # Handles class imbalance (~3.5% fraud ratio)
+    random_state: 42
+
+serving:
+  host: "0.0.0.0"
+  port: 8000
+  model_stage: "Production"
